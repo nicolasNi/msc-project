@@ -1,0 +1,76 @@
+2019-08-02 00:44:42,506 [INFO ]  Starting Rasa server on http://localhost:5005
+2019-08-02 00:44:53,255 [ERROR]  Experienced exception while trying to serve
+Traceback (most recent call last):
+  File "/anaconda3/envs/testRasa/lib/python3.7/site-packages/sanic/app.py", line 1096, in run
+    serve(**server_settings)
+  File "/anaconda3/envs/testRasa/lib/python3.7/site-packages/sanic/server.py", line 742, in serve
+    trigger_events(before_start, loop)
+  File "/anaconda3/envs/testRasa/lib/python3.7/site-packages/sanic/server.py", line 604, in trigger_events
+    loop.run_until_complete(result)
+  File "uvloop/loop.pyx", line 1445, in uvloop.loop.Loop.run_until_complete
+  File "uvloop/loop.pyx", line 1438, in uvloop.loop.Loop.run_until_complete
+  File "uvloop/loop.pyx", line 1347, in uvloop.loop.Loop.run_forever
+  File "uvloop/loop.pyx", line 487, in uvloop.loop.Loop._run
+  File "uvloop/loop.pyx", line 404, in uvloop.loop.Loop._on_idle
+  File "uvloop/cbhandles.pyx", line 66, in uvloop.loop.Handle._run
+  File "/anaconda3/envs/testRasa/lib/python3.7/site-packages/rasa/core/run.py", line 199, in load_agent_on_start
+    _interpreter = NaturalLanguageInterpreter.create(nlu_model, endpoints.nlu)
+  File "/anaconda3/envs/testRasa/lib/python3.7/site-packages/rasa/core/interpreter.py", line 53, in create
+    return RasaNLUInterpreter(model_directory=obj)
+  File "/anaconda3/envs/testRasa/lib/python3.7/site-packages/rasa/core/interpreter.py", line 250, in __init__
+    self._load_interpreter()
+  File "/anaconda3/envs/testRasa/lib/python3.7/site-packages/rasa/core/interpreter.py", line 270, in _load_interpreter
+    self.interpreter = Interpreter.load(self.model_directory)
+  File "/anaconda3/envs/testRasa/lib/python3.7/site-packages/rasa/nlu/model.py", line 301, in load
+    return Interpreter.create(model_metadata, component_builder, skip_validation)
+  File "/anaconda3/envs/testRasa/lib/python3.7/site-packages/rasa/nlu/model.py", line 328, in create
+    component_meta, model_metadata.model_dir, model_metadata, **context
+  File "/anaconda3/envs/testRasa/lib/python3.7/site-packages/rasa/nlu/components.py", line 433, in load_component
+    component_meta, model_dir, model_metadata, cached_component, **context
+  File "/anaconda3/envs/testRasa/lib/python3.7/site-packages/rasa/nlu/registry.py", line 181, in load_component_by_meta
+    component_meta, model_dir, metadata, cached_component, **kwargs
+  File "/anaconda3/envs/testRasa/lib/python3.7/site-packages/rasa/nlu/utils/spacy_utils.py", line 143, in load
+    nlp = cls.load_model(model_name)
+  File "/anaconda3/envs/testRasa/lib/python3.7/site-packages/rasa/nlu/utils/spacy_utils.py", line 47, in load_model
+    return spacy.load(spacy_model_name, disable=["parser"])
+  File "/anaconda3/envs/testRasa/lib/python3.7/site-packages/spacy/__init__.py", line 27, in load
+    return util.load_model(name, **overrides)
+  File "/anaconda3/envs/testRasa/lib/python3.7/site-packages/spacy/util.py", line 132, in load_model
+    return load_model_from_link(name, **overrides)
+  File "/anaconda3/envs/testRasa/lib/python3.7/site-packages/spacy/util.py", line 149, in load_model_from_link
+    return cls.load(**overrides)
+  File "/anaconda3/envs/testRasa/lib/python3.7/site-packages/spacy/data/en/__init__.py", line 12, in load
+    return load_model_from_init_py(__file__, **overrides)
+  File "/anaconda3/envs/testRasa/lib/python3.7/site-packages/spacy/util.py", line 193, in load_model_from_init_py
+    return load_model_from_path(data_path, meta, **overrides)
+  File "/anaconda3/envs/testRasa/lib/python3.7/site-packages/spacy/util.py", line 176, in load_model_from_path
+    return nlp.from_disk(model_path)
+  File "/anaconda3/envs/testRasa/lib/python3.7/site-packages/spacy/language.py", line 811, in from_disk
+    util.from_disk(path, deserializers, exclude)
+  File "/anaconda3/envs/testRasa/lib/python3.7/site-packages/spacy/util.py", line 633, in from_disk
+    reader(path / key)
+  File "/anaconda3/envs/testRasa/lib/python3.7/site-packages/spacy/language.py", line 800, in <lambda>
+    deserializers["vocab"] = lambda p: self.vocab.from_disk(p) and _fix_pretrained_vectors_name(self)
+  File "vocab.pyx", line 455, in spacy.vocab.Vocab.from_disk
+  File "/anaconda3/envs/testRasa/lib/python3.7/site-packages/spacy/_ml.py", line 296, in link_vectors_to_models
+    word.rank = vectors.key2row[word.orth]
+  File "/anaconda3/envs/testRasa/lib/python3.7/site-packages/socketio/client.py", line 25, in signal_handler
+    return original_signal_handler(sig, frame)
+  File "/anaconda3/envs/testRasa/lib/python3.7/site-packages/engineio/client.py", line 41, in signal_handler
+    return original_signal_handler(sig, frame)
+KeyboardInterrupt
+2019-08-02 00:45:11,843 [INFO ]  Starting Rasa server on http://localhost:5005
+2019-08-02 00:45:28,072 [INFO ]  Added 'SpacyNLP' to component cache. Key 'SpacyNLP-en'.
+2019-08-02 00:47:07,355 [INFO ]  Starting Rasa server on http://localhost:5005
+2019-08-02 00:47:22,781 [INFO ]  Added 'SpacyNLP' to component cache. Key 'SpacyNLP-en'.
+2019-08-02 01:00:31,617 [INFO ]  Starting Rasa server on http://localhost:5005
+2019-08-02 01:00:47,326 [INFO ]  Added 'SpacyNLP' to component cache. Key 'SpacyNLP-en'.
+2019-08-02 01:04:47,359 [INFO ]  Starting Rasa server on http://localhost:5005
+2019-08-02 01:05:03,355 [INFO ]  Added 'SpacyNLP' to component cache. Key 'SpacyNLP-en'.
+2019-08-02 01:08:27,201 [WARNI]  Facebook API currently allows only up to 3 buttons. If you add more, all will be ignored.
+2019-08-02 01:09:06,208 [ERROR]  Failed to extract slot visa_purpose with action check_visa_form
+2019-08-02 01:09:33,101 [WARNI]  Facebook API currently allows only up to 3 buttons. If you add more, all will be ignored.
+2019-08-02 01:09:39,292 [WARNI]  Facebook API currently allows only up to 3 buttons. If you add more, all will be ignored.
+2019-08-02 08:44:31,439 [INFO ]  Starting Rasa server on http://localhost:5005
+2019-08-02 08:44:47,200 [INFO ]  Added 'SpacyNLP' to component cache. Key 'SpacyNLP-en'.
+2019-08-02 08:45:44,980 [WARNI]  Facebook API currently allows only up to 3 buttons. If you add more, all will be ignored.

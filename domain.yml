@@ -1,0 +1,318 @@
+intents:
+- '**bye**'
+- affirm
+- ask_builder
+- ask_faq_channels
+- ask_faq_community_size
+- ask_faq_differencecorenlu
+- ask_faq_languages
+- ask_faq_opensource
+- ask_faq_platform
+- ask_faq_python_version
+- ask_faq_slots
+- ask_faq_tutorials
+- ask_faq_voice
+- ask_faq_what_is_forum
+- ask_how_contribute
+- ask_howbuilt
+- ask_howdoing
+- ask_howold
+- ask_isbot
+- ask_languagesbot
+- ask_question_in_forum
+- ask_restaurant
+- ask_time
+- ask_weather
+- ask_whatismyname
+- ask_whatisrasa
+- ask_whatspossible
+- ask_when_next_event
+- ask_wherefrom
+- ask_which_events
+- ask_whoami
+- ask_whoisit
+- ask_why_contribute
+- bye
+- canthelp
+- check_visa
+- contact_sales
+- deny
+- enter_data
+- explain
+- feedback
+- greet
+- how_to_get_started
+- human_handoff
+- install_rasa
+- next_step
+- nlu_generation_tool_recommendation
+- nlu_info
+- out_of_scope
+- pipeline_recommendation
+- signup_newsletter
+- switch
+- technical_question
+- thank
+- user_nationality
+entities:
+- check_visa_family_EEA
+- check_visa_family_UK
+- check_visa_family_valid_article
+- check_visa_study
+- check_visa_tourism_family
+- check_visa_tourism_valid_article
+- check_visa_work
+- company
+- current_api
+- entity
+- feedback_value
+- job_function
+- language
+- location
+- name
+- nationality
+- nlu_part
+- number
+- package_manager
+- product
+- visa_purpose
+slots:
+  account_type:
+    type: categorical
+    values:
+    - premium
+    - basic
+  check_visa_family_EEA:
+    type: unfeaturized
+    auto_fill: false
+  check_visa_family_UK:
+    type: unfeaturized
+    auto_fill: false
+  check_visa_family_valid_article:
+    type: unfeaturized
+    auto_fill: false
+  check_visa_study:
+    type: unfeaturized
+    auto_fill: false
+  check_visa_tourism_family:
+    type: unfeaturized
+    auto_fill: false
+  check_visa_tourism_valid_article:
+    type: unfeaturized
+    auto_fill: false
+  check_visa_work:
+    type: unfeaturized
+    auto_fill: false
+  company:
+    type: text
+  feedback_value:
+    type: categorical
+    values:
+    - positive
+    - negative
+  nationality:
+    type: unfeaturized
+    auto_fill: false
+  visa_purpose:
+    type: unfeaturized
+    auto_fill: false
+templates:
+  utter_ask_nationality:
+  - text: What’s your nationality as shown on your passport or travel document?
+  utter_ask_visa_purpose:
+  - text: What are you coming to the UK to do?
+    buttons:
+    - title: Tourism
+      payload: /{"visa_purpose":"Tourism"}
+    - title: Work, academic visit or business
+      payload: /{"visa_purpose":"Work"}
+    - title: Study
+      payload: /{"visa_purpose":"Study"}
+    - title: Transit (on your way to somewhere else)
+      payload: /{"visa_purpose":"Transit"}
+    - title: Join partner or family for a long stay
+      payload: /{"visa_purpose":"partner"}
+    - title: Get married or enter into a civil partnership
+      payload: /{"visa_purpose":"marry"}
+    - title: Stay with your child, if they’re at school
+      payload: /{"visa_purpose":"child"}
+    - title: Get private medical treatment
+      payload: /{"visa_purpose":"medical"}
+    - title: For official diplomatic or government business (including transit through
+        the UK)
+      payload: /{"visa_purpose":"diplomatic"}
+  utter_ask_check_visa_tourism_family:
+  - text: Will you be travelling with or visiting either your partner or a family
+      member in the UK?
+    buttons:
+    - title: Yes
+      payload: /{"check_visa_tourism_family":"yes"}
+    - title: No
+      payload: /{"check_visa_tourism_family":"no"}
+  utter_ask_check_visa_tourism_valid_article:
+  - text: Do you have a valid Article 10 residence card?
+    buttons:
+    - title: Yes
+      payload: /{"check_visa_tourism_valid_article":"yes"}
+    - title: No
+      payload: /{"check_visa_tourism_valid_article":"no"}
+  utter_ask_check_visa_work:
+  - text: How long are you planning to work in the UK for?
+    buttons:
+    - title: 6 months or less
+      payload: /{"check_visa_work":"6 months or less"}
+    - title: longer than 6 months
+      payload: /{"check_visa_work":"longer than 6 months"}
+  utter_ask_check_visa_study:
+  - text: How long are you planning to study in the UK for?
+    buttons:
+    - title: 6 months or less
+      payload: /{"check_visa_study":"6 months or less"}
+    - title: longer than 6 months
+      payload: /{"check_visa_study":"longer than 6 months"}
+  utter_ask_check_visa_family_valid_article:
+  - text: Do you have a valid Article 10 residence card?
+    buttons:
+    - title: Yes
+      payload: /{"check_visa_family_valid_article":"yes"}
+    - title: No
+      payload: /{"check_visa_family_valid_article":"no"}
+  utter_ask_check_visa_family_UK:
+  - text: Is your partner or family member a British citizen, or settled in the UK?
+    buttons:
+    - title: Yes
+      payload: /{"check_visa_family_UK":"yes"}
+    - title: No
+      payload: /{"check_visa_family_UK":"no"}
+  utter_ask_check_visa_family_EEA:
+  - text: Is your partner or family member from the European Economic Area (EEA)?
+    buttons:
+    - title: Yes
+      payload: /{"check_visa_family_EEA":"yes"}
+    - title: No
+      payload: /{"check_visa_family_EEA":"no"}
+  utter_noworries:
+  - text: No worries!
+  - text: You're welcome!
+  - text: I'm happy to help.
+  utter_anything_else:
+  - text: Is there anything else I can help you with?
+  utter_bye:
+  - text: Goodbye!
+  - text: Bye!
+  - text: Ciao!
+  - text: Bye, was nice talking to you!
+  utter_greet_noname:
+  - text: Hey!
+  - text: Hi!
+  - text: Hey there!
+  utter_what_help:
+  - text: Ok, what can I help you with?
+  utter_thumbsup:
+  - text: Thank you for your feedback.
+  - text: Okay.
+  - text: Got it.
+  utter_not_sure:
+  - text: Hmm, not sure what you mean...
+  utter_possibilities:
+  - text: You can either check if you need a UK visa  or apply a UK visa.
+  - text: You can apply a UK visa or check if you need a UK visa.
+  utter_can_do:
+  - text: Sure thing!
+  - text: Can do!
+  - text: You got it. 👍
+  utter_docu:
+  - text: 'If you want some more awesome Rasa content, check out our forum: https://forum.rasa.com/'
+  utter_ask_feedback:
+  - text: How is this conversation going?
+    buttons:
+    - title: 👍
+      payload: /feedback{"feedback_value":"positive"}
+    - title: 👎
+      payload: /feedback{"feedback_value":"negative"}
+  utter_great:
+  - text: Great! 👍
+  - text: That's great! 🙌
+  - text: Awesome! 🎉
+  - text: Cool, let's do it 🚀
+  utter_test:
+  - text: test
+  utter_test2222222:
+  - text: test222222
+  utter_ask_continue_check_visa:
+  - text: Do you still want to check visa?
+  utter_ask_builder:
+  - text: A student at University of Leeds  🛠
+  - text: One of the smart students at University of Leeds! 🧠
+  utter_ask_weather:
+  - text: I don't know about where you live, but in my world it's always sunny ☀️
+  - text: Honestly it's a bit too hot these days 😅
+  - text: Blue skies and sunshine!
+  - text: Let's just say it hasn't rained in weeks ☀️
+  utter_ask_howdoing:
+  - text: I'm great! Thanks for asking.
+  - text: I'm good, thanks!
+  - text: A little bit too warm, otherwise fine.
+  utter_ask_whatspossible:
+  - text: You can either check if you need a UK visa  or apply a UK visa.
+  - text: You can apply a UK visa or check if you need a UK visa.
+  utter_ask_isbot:
+  - text: Yep, I'm a bot!
+  utter_ask_howold:
+  - text: 1 month.
+  - text: Old enough to be a bot.
+  - text: Age is just an issue of mind over matter. If you don’t mind, it doesn’t
+      matter.
+  utter_ask_languagesbot:
+  - text: I can spell baguette in French, but unfortunately English is the only language
+      I can answer you in.
+  - text: I am in the process of learning, but at the moment I can only speak English.
+  utter_ask_restaurant:
+  - text: I'm sorry, I can’t recommend you a restaurant as I usually cook at home.
+  utter_ask_time:
+  - text: It's the most wonderful time of the year!
+  utter_ask_wherefrom:
+  - text: I was born in Leeds, but I consider myself a citizen of the world.
+  - text: I was born in the coolest city on Earth.
+  utter_ask_whoami:
+  - text: I hope you are being yourself.
+  utter_ask_whatismyname:
+  - text: It's probably the one that your parents chose for you.
+  utter_ask_howbuilt:
+  - text: I was built with a lot of love and patience.
+actions:
+- action-test
+- action_chitchat
+- action_fetch_profile
+- utter_anything_else
+- utter_ask_builder
+- utter_ask_continue_check_visa
+- utter_ask_feedback
+- utter_ask_howbuilt
+- utter_ask_howdoing
+- utter_ask_howold
+- utter_ask_isbot
+- utter_ask_languagesbot
+- utter_ask_nationality
+- utter_ask_restaurant
+- utter_ask_time
+- utter_ask_visa_purpose
+- utter_ask_weather
+- utter_ask_whatismyname
+- utter_ask_whatspossible
+- utter_ask_wherefrom
+- utter_ask_whoami
+- utter_bye
+- utter_can_do
+- utter_docu
+- utter_great
+- utter_greet_noname
+- utter_not_sure
+- utter_noworries
+- utter_possibilities
+- utter_test
+- utter_test2222222
+- utter_thumbsup
+- utter_what_help
+forms:
+- check_visa_form
