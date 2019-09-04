@@ -85,14 +85,6 @@ class CheckVisaForm(FormAction):
             str += "Please check following URL for details:\n" + CheckVisaForm.url
         dispatcher.utter_message(str)
         CheckVisaForm.slots = ["nationality"]
-
-        # CheckVisaForm.reset_total_slots()
-        # dispatcher.utter_template("utter_continue_step{}".format(step), tracker)
-
-        # tracker.is_paused()
-        # for slot in tracker.slots.values():
-        #     slot.reset()
-        # return []
         reset_slots = CheckVisaForm.get_reset_total_slots(tracker)
         return reset_slots
 
@@ -109,27 +101,18 @@ class CheckVisaForm(FormAction):
 
     @staticmethod
     def get_slots(tracker):
-        # logger.debug('-------------------<debug> ------.' + str(tracker.get_slot("nationality")))
         if tracker.get_slot("nationality"):
-            # logger.info('-------------------<debug> ------     add slot!!!!!!!!!!!!!!!!!!!!!.' )
             rows_check_visa_one = CheckVisaForm.check_visa_one(tracker.get_slot("nationality"))
-            # logger.info('-------------------<debug> ------     add slot!!!!!!!!!!!!!!!!!!!!!.' + str(rows_check_visa_one))
             if len(rows_check_visa_one) == 1:
-                # logger.info('*********************************     if    *********************************' )
                 CheckVisaForm.set_result(rows_check_visa_one[0][1], rows_check_visa_one[0][2])
             else:
-                # logger.info('*********************************     else    *********************************')
                 visa_purpose = tracker.get_slot("visa_purpose")
                 if not visa_purpose:
                     CheckVisaForm.add_slot(CheckVisaForm.slot_visa_purpose)
                 else:
-                    # logger.info('-------------------<debug> ------     add slot!!!!!!!!!!!!!!!!!!!!!.' + visa_purpose)
                     if visa_purpose != "Transit":
                         rows_check_visa_not_transit = CheckVisaForm.check_visa_not_transit(tracker)
-                        # logger.info('&&&&&&&&&&&&&&&&&&&&&<debug> &&&&&&&&&&&&&&&&&&&&&.' + str(len(rows_check_visa_not_transit)))
-                        # logger.info('&&&&&&&&&&&&&&&&&&&&&<debug> &&&&&&&&&&&&&&&&&&&&&.' + str(rows_check_visa_not_transit))
                         end, slot = CheckVisaForm.check_whether_end_not_transit(tracker, rows_check_visa_not_transit)
-                        # logger.info('+++++++++++++++++++++++++++<debug> +++++++++++++++++++++++++++.' + str(slot))
                         if end:
                             CheckVisaForm.set_result(rows_check_visa_not_transit[0][9],
                                                      rows_check_visa_not_transit[0][10])
@@ -176,7 +159,6 @@ class CheckVisaForm(FormAction):
             query_conditions += "AND LOWER(\"check_visa_family_EEA\") =" + "LOWER(\'"+tracker.get_slot("check_visa_family_EEA")+ "\')"
 
         str_query = "SELECT * FROM \"Check_visa_not_transit\" where " + query_conditions
-        logger.info('@@@@@@@@@@@@@@@@@@@@@@@@@@@@<str_query>@@@@@@@@@@@@@@@@@@@@@@@@@@@@.' + str_query)
         rows = DBUtil.query(str_query)
         return rows
 
@@ -226,15 +208,6 @@ class ActionTest(Action):
            tracker: Tracker,
            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
        tracker.get_slot("nationality")
-       logger.info('+++++++++++++++++++++++++++<nationality> +++++++++++++++++++++++++++.' + str(tracker.get_slot("nationality")))
-       logger.info('+++++++++++++++++++++++++++<visa_purpose> +++++++++++++++++++++++++++.' + str(tracker.get_slot("visa_purpose")))
-       logger.info('+++++++++++++++++++++++++++<check_visa_tourism_family> +++++++++++++++++++++++++++.' + str(tracker.get_slot("check_visa_tourism_family")))
-       logger.info('+++++++++++++++++++++++++++<check_visa_tourism_valid_article> +++++++++++++++++++++++++++.' + str(tracker.get_slot("check_visa_tourism_valid_article")))
-       logger.info('+++++++++++++++++++++++++++<check_visa_work> +++++++++++++++++++++++++++.' + str(tracker.get_slot("check_visa_work")))
-       logger.info('+++++++++++++++++++++++++++<check_visa_study> +++++++++++++++++++++++++++.' + str(tracker.get_slot("check_visa_study")))
-       logger.info('+++++++++++++++++++++++++++<check_visa_family_valid_article> +++++++++++++++++++++++++++.' + str(tracker.get_slot("check_visa_family_valid_article")))
-       logger.info('+++++++++++++++++++++++++++<check_visa_family_UK> +++++++++++++++++++++++++++.' + str(tracker.get_slot("check_visa_family_UK")))
-       logger.info('+++++++++++++++++++++++++++<check_visa_family_EEA> +++++++++++++++++++++++++++.' + str(tracker.get_slot("check_visa_family_EEA")))
        return []
 
 class ActionChitchat(Action):
